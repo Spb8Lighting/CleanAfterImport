@@ -18,12 +18,12 @@
 
 # <pep8 compliant>
 
-import bpy
+import bpy # noqa pylint: disable=import-error
 bl_info = {
     "author": "Sylvain Guiblain (spb8)",
     "name": "Clean After Import",
     "location": "Object > Clean After Import",
-    "version": (0, 0, 1),
+    "version": (0, 0, 2),
     "blender": (2, 80, 0),
     "description": "Clean Objects and Meshs by batch",
     "category": "Object",
@@ -72,6 +72,11 @@ class CleanAfterImport(bpy.types.Operator):
         bpy.ops.object.select_all(action='SELECT')
         bpy.ops.object.transform_apply(
             location=False, rotation=True, scale=True)
+        
+        # Set UNITS values
+        bpy.context.scene.unit_settings.system = 'METRIC'
+        bpy.context.scene.unit_settings.scale_length = 0.01
+        bpy.context.scene.unit_settings.length_unit = 'METERS'
 
         return {'FINISHED'}
 
