@@ -56,9 +56,9 @@ class CleanAfterImport(bpy.types.Operator):
                 bpy.ops.mesh.select_all(action='SELECT')
                 bpy.ops.mesh.remove_doubles(threshold=0.0001)
                 bpy.ops.object.mode_set(mode='OBJECT')
-                # Apply Normals: Auto Smooth with an angle of 22.9°
+                # Apply Normals: Auto Smooth with an angle of 32.9°
                 obj.data.use_auto_smooth = True
-                obj.data.auto_smooth_angle = 0.39968
+                obj.data.auto_smooth_angle = 0.5742127510917031
                 # Add modifier "Decimate as 0.5° Planar and Normal
                 obj.modifiers.clear()
                 if len(obj.data.polygons) > 1:
@@ -76,7 +76,7 @@ class CleanAfterImport(bpy.types.Operator):
         # Set UNITS values
         bpy.context.scene.unit_settings.system = 'METRIC'
         bpy.context.scene.unit_settings.scale_length = 0.01
-        bpy.context.scene.unit_settings.length_unit = 'METERS'
+        bpy.context.scene.unit_settings.length_unit = 'MILLIMETERS'
 
         return {'FINISHED'}
 
